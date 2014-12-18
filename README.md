@@ -25,6 +25,7 @@ when you run the script it will
 1. find the card on the done list
 2. update its date based on the label
 3. move it back to the recurring task list ready for next time
+4. it will then sort the recurring list soonest by due date
 
 ### installation
 clone the git repo and setup your config as shown below

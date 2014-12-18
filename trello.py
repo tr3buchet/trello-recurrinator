@@ -199,10 +199,9 @@ if __name__ == '__main__':
     relevant_board_id = config.get('relevant_board_id')
     t = Trello(config)
 
-    # NOTE(tr3buchet): eagerload the board and all lists and cards
-    #                  noting the recurring list and done list
-    board = t.get_board(relevant_board_id, eager=True)
-    for l in board['lists']:
+    # NOTE(tr3buchet): get the list ids for recurring and done lists
+    lists = t.get_board_lists(relevant_board_id)
+    for l in lists:
         if l['name'] == config.get('recurring_list_name'):
             recurring_list = l
         elif l['name'] == config.get('done_list_name'):
@@ -210,7 +209,7 @@ if __name__ == '__main__':
 
     # NOTE(tr3buchet): if card is done and recurs, reset it by updating its
     #                  due date and moving it back to the recurring list
-    for card in done_list['cards']:
+    for card in t.get_list_cards(done_list['id']):
         if card['recurs']:
             t.tick_recurring_card_date(card)
             t.update_card(card, 'idList', recurring_list['id'])
