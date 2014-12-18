@@ -182,7 +182,7 @@ def get_config():
             'api': os.environ['TRELLO_API'],
             'key': os.environ['TRELLO_KEY'],
             'token': os.environ['TRELLO_TOKEN'],
-            'relevant_board_id': os.environ['TRELLO_TODO_BOARD_ID'],
+            'relevant_board_id': os.environ['TRELLO_RELEVANT_BOARD_ID'],
             'recurring_list_name': os.environ['TRELLO_RECURRING_LIST_NAME'],
             'done_list_name': os.environ['TRELLO_DONE_LIST_NAME']}
 
