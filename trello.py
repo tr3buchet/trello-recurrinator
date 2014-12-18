@@ -214,3 +214,10 @@ if __name__ == '__main__':
         if card['recurs']:
             t.tick_recurring_card_date(card)
             t.update_card(card, 'idList', recurring_list['id'])
+
+    # NOTE(tr3buchet): order cards in recurring list soonest first by due date
+    cards = sorted(t.get_list_cards(recurring_list['id']),
+                   key=lambda c: c['due'])
+    for i, card in enumerate(cards):
+        t.update_card(card, 'pos', i+1)
+
