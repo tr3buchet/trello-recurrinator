@@ -215,8 +215,9 @@ if __name__ == '__main__':
             t.update_card(card, 'idList', recurring_list['id'])
 
     # NOTE(tr3buchet): order cards in recurring list soonest first by due date
-    cards = sorted(t.get_list_cards(recurring_list['id']),
-                   key=lambda c: c['due'])
-    for i, card in enumerate(cards):
-        t.update_card(card, 'pos', i+1)
+    cards = t.get_list_cards(recurring_list['id'])
+    sorted_cards = sorted(cards, key=lambda c: c['due'])
+    if cards != sorted_cards:
+        for i, card in enumerate(sorted_cards):
+            t.update_card(card, 'pos', i+1)
 
