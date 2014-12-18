@@ -137,9 +137,13 @@ class Trello(object):
         rrmN - recurs every N months
         rryN - recurs every N years
         """
-        if not card['recurs']:
+        if card['recurs'] is None:
             print 'card |%s| had no known recurring label' % card['name']
             return
+        if card['due'] is None:
+            print 'card |%s| has no due date and cannot recur' % card['name']
+            return
+
         if card['recurs'][0] == 'd':
             delta = relativedelta(days=int(card['recurs'][1:]))
         elif card['recurs'][0] == 'm':
