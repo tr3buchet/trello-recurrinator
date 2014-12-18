@@ -112,6 +112,9 @@ class Trello(object):
         """
         update the card on trello by setting its attribute to value
         """
+        msg = ('updating attribute |%s| on card |%s|\n'
+               '    changed from |%s| to |%s|')
+        print msg % (attribute, card['name'], card[attribute], value)
         data = {'value': value}
         return selfie._put('cards/%s/%s' % (card['id'], attribute), data)
 
@@ -180,7 +183,7 @@ def get_config():
             'recurring_list_name': config.get('config', 'recurring_list_name'),
             'done_list_name': config.get('config', 'done_list_name')}
     except Exception as e:
-        print e, ' -> attempting to lead environment variables'
+        print e, ' -> attempting to load environment variables'
         # NOTE(tr3buchet): attempt to read env variables instead
         return {
             'api': os.environ['TRELLO_API'],
