@@ -70,3 +70,12 @@ https://trello.com/1/authorize?key=substitutewithyourapplicationkey&name=My+Appl
 
 for more information see [getting a token from a user](https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user)
 
+### heroku instructions
+1. clone the git repo
+2. create a [heroku](https://heroku.com)
+3. heroku git:remote -a appname
+4. set env variables using `heroku config:set` as shown [here](https://devcenter.heroku.com/articles/config-vars#setting-up-config-vars-for-a-deployed-application)
+5. test running by `heroku run worker`
+6. if test went well, add the heroku scheduler addon to your app and set it to run once an hour or so
+
+in case it matters, a single run of the app takes only a few seconds, so your app will come no where near the 750 free dyno hours
