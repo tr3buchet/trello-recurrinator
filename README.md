@@ -46,7 +46,7 @@ example ~/.trello.conf:
 api = https://trello.com/1
 key = <key>
 token = <token>
-todo_board_id = hifj3lS
+relevant_board_id = hifj3lS
 recurring_list_name = recurring
 done_list_name = done
 ```
@@ -56,7 +56,7 @@ and ENV VARIABLES if you choose to use them (on heroku or whatever)
 TRELLO_API
 TRELLO_KEY
 TRELLO_TOKEN
-TRELLO_TODO_BOARD_ID
+TRELLO_RELEVANT_BOARD_ID
 TRELLO_RECURRING_LIST_NAME
 TRELLO_DONE_LIST_NAME
 ```
